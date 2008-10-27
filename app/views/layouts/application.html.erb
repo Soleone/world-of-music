@@ -1,0 +1,21 @@
+<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>World of Music</title>
+  </head>
+  <body
+    
+    <% if flash[:notice] || flash[:error] %>
+    <div id="flash <%= flash[:notice] ? 'notice' : 'error' %>">
+      <%= flash[:notice] if flash[:notice] %>
+      <%= flash[:error] if flash[:error] %>
+    </div>
+    <% end %>
+    
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
