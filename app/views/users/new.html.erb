@@ -1,19 +1,13 @@
 <h1>Sign up as a new user</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
-<%= error_messages_for :user %>
-<% form_for :user, :url => users_path do |f| -%>
-<p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
-
-<p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
-
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
-
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p><%= submit_tag 'Sign up' %></p>
+<% semantic_form_for @user do |form| %>
+  <% form.input_field_set do %>
+    <%= form.input :login, :hint => "This will be your displayed name that you use when logging in." %>
+    <%= form.input :email %>
+    <%= form.input :password, :as => :password %>
+    <%= form.input :password_confirmation, :as => :password %>
+  <% end -%>
+  
+  <p><%= form.commit_button "Signup" %></p>
 <% end -%>
